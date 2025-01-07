@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5500:5000"
+    volumes:
+      - ./app.py:/app/app.py
+      - ./index.html:/app/index.html
+      - ./styles.css:/app/styles.css
+      - ./script.js:/app/script.js
+      - ./gpx2fit.py:/app/gpx2fit.py
+      - ./fit2json.py:/app/fit2json.py
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - PYTHONUNBUFFERED=1
+      - BASE_URL=http://localhost:5500
+    restart: unless-stopped 

@@ -15,23 +15,17 @@ COPY requirements.txt .
 # 安装 Python 依赖
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 复制静态文件
-COPY index.html .
-COPY styles.css .
-COPY script.js .
-
-# 复制 Python 文件
-COPY app.py .
-COPY gpx2fit.py .
-COPY fit2json.py .
+# 复制源代码
+COPY src /app/src
 
 # 设置环境变量
-ENV FLASK_APP=app.py
+ENV FLASK_APP=src/app.py
 ENV FLASK_ENV=development
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
 
 # 暴露端口
 EXPOSE 5500
 
 # 启动应用
-CMD ["python", "app.py"] 
+CMD ["python", "src/app.py"] 

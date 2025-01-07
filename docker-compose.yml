@@ -1,19 +1,19 @@
 version: '3'
 services:
-  web:
-    build: .
+  gpx2fit:
+    container_name: gpx2fit
+    image: gpx2fit:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "5500:5500"
     volumes:
-      - ./app.py:/app/app.py
-      - ./index.html:/app/index.html
-      - ./styles.css:/app/styles.css
-      - ./script.js:/app/script.js
-      - ./gpx2fit.py:/app/gpx2fit.py
-      - ./fit2json.py:/app/fit2json.py
+      - ./src:/app/src
     environment:
-      - FLASK_APP=app.py
+      - FLASK_APP=src/app.py
       - FLASK_ENV=development
       - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
       - BASE_URL=http://localhost:5500
-    restart: unless-stopped 
+    restart: unless-stopped

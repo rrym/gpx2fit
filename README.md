@@ -49,6 +49,8 @@ docker-compose up -d
 3. 访问应用：
 打开浏览器访问 http://localhost:5500
 
+---
+
 ### 手动部署
 
 1. 安装Python依赖：
@@ -56,8 +58,9 @@ docker-compose up -d
 pip install -r requirements.txt
 ```
 
-2. 启动Flask应用：
+2. 进入src目录 启动app.py：
 ```bash
+cd src
 python app.py
 ```
 
@@ -84,14 +87,16 @@ python app.py
 
 ```
 gpx2fit/
-├── app.py              # Flask应用主文件
-├── gpx2fit.py         # GPX转FIT核心逻辑
-├── requirements.txt    # Python依赖文件
-├── Dockerfile         # Docker构建文件
+├── src/           # 源代码目录
+│   │── styles.css # 样式文件
+│   │── script.js  # JavaScript脚本
+│   │── index.html # 主页面
+│   ├── app.py     # Flask应用主文件 用于转换服务
+├── requirements.txt   # Python依赖文件
+├── Dockerfile        # Docker构建文件
 ├── docker-compose.yml # Docker Compose配置
-├── index.html         # 前端页面
-├── styles.css         # 样式文件
-└── script.js          # JavaScript脚本
+├── .dockerignore     # Docker忽略文件
+└── README.md         # 项目说明文档
 ```
 
 ## 环境变量

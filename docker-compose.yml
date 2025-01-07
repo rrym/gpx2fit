@@ -3,7 +3,7 @@ services:
   web:
     build: .
     ports:
-      - "5500:5000"
+      - "5500:5500"
     volumes:
       - ./app.py:/app/app.py
       - ./index.html:/app/index.html

@@ -31,7 +31,7 @@ ENV FLASK_ENV=development
 ENV PYTHONUNBUFFERED=1
 
 # 暴露端口
-EXPOSE 5000
+EXPOSE 5500
 
 # 启动应用
 CMD ["python", "app.py"] 
